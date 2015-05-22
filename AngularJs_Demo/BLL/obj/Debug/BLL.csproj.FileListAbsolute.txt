@@ -1,0 +1,7 @@
+C:\Users\Administrator\桌面\AngularJs_Demo\BLL\bin\Debug\BLL.dll
+C:\Users\Administrator\桌面\AngularJs_Demo\BLL\bin\Debug\BLL.pdb
+C:\Users\Administrator\桌面\AngularJs_Demo\BLL\obj\Debug\BLL.dll
+C:\Users\Administrator\桌面\AngularJs_Demo\BLL\obj\Debug\BLL.pdb
+C:\Users\Administrator\桌面\AngularJs_Demo\BLL\bin\Debug\Model.dll
+C:\Users\Administrator\桌面\AngularJs_Demo\BLL\bin\Debug\Model.pdb
+C:\Users\Administrator\桌面\AngularJs_Demo\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache

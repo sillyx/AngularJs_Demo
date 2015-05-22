@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/appcontroller.js"></script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="appcontroller">
+        <table> 
+            <thead>
+                <tr>
+                    <th>User ID </th>
+                    <th>Name</th>
+                    <th>Postition</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="user in Users">
+                    <td>
+                        {{user.Id}}
+                    </td>
+                    <td>
+                        {{user.Name}}
+                    </td>
+                    <td>
+                        {{user.Position}}
+                    </td>
+                    <td>
+                        {{user.Address}}
+                    </td>
+                    <td>
+                        <a ng-click="Delete(user.Id);" href="javascript:">Del</a>
+                        <a ng-click="Update(user);" href="javascript:">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
