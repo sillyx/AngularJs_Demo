@@ -31,8 +31,7 @@
                         {{user.Id}}
                     </td>
                     <td>
-                        {{user.Name}}
-                    </td>
+                        <input type="text" style="border:none;text-align:center;" value="{{user.Name}}" ng-model="user.Name" id="txt_{{user.Id}}" readonly></td>
                     <td>
                         {{user.Position}}
                     </td>
@@ -40,8 +39,10 @@
                         {{user.Address}}
                     </td>
                     <td>
-                        <a ng-click="Delete(user.Id);" href="javascript:">Del</a>
-                        <a ng-click="Update(user);" href="javascript:">Edit</a>
+                        <a ng-click="Delete(user)" href="javascript:">Del</a>
+                        <edit ng-model="user"><a ng-show="showEdit" ng-click="toggle()" href="javascript:">Edit</a></edit>
+                        <a href="javascript:;" ng-click="Update(user);" ng-show="!showEdit">Update</a>
+                        <edit ng-model="user"><a href="javascript:;" ng-show="!showEdit" ng-click="toggle()">Cancel</a></edit>
                     </td>
                 </tr>
             </tbody>

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-using System.Linq;
 using System.Data.SqlClient;
 
 namespace BLL
@@ -38,11 +37,44 @@ namespace BLL
 
         public bool DelEntity<T>(T entity)
         {
-            return false;
+            var tableName = typeof(T).Name;
+            var t = typeof(T).Assembly.CreateInstance(typeof(T).ToString(), true);
+            var property = t.GetType().GetProperties();
+            string id = string.Empty;
+            foreach (var p in property)
+            {
+                if (p.Name.Equals("Id"))
+                    id = p.GetValue(entity, null).ToString();
+            }
+            string sql = string.Format("delete from {0} where Id='{1}'", tableName, id);
+            var res = SqlDBHelper.ExecuteSql(sql) > 0;
+            return res;
         }
         public bool UpdateEntity<T>(T entity)
         {
-            return false;
+            var tableName = typeof(T).Name;
+            var sql = new StringBuilder("update ");
+            sql.Append(tableName);
+            sql.Append(" set ");
+            var t = typeof(T).Assembly.CreateInstance(typeof(T).ToString(), true);
+            var property = t.GetType().GetProperties();
+            var id = string.Empty;
+            foreach (var p in property)
+            {
+                if (!p.Name.Equals("Id"))
+                {
+                    sql.Append(p.Name);
+                    sql.Append("='");
+                    sql.Append(p.GetValue(entity, null));
+                    sql.Append("',");
+                }
+                else
+                    id = p.GetValue(entity, null).ToString();
+            }
+            sql.Length--;
+            sql.AppendFormat("where Id='{0}'", id);
+            var res = SqlDBHelper.ExecuteSql(sql.ToString()) > 0;
+            return res;
         }
     }
 }

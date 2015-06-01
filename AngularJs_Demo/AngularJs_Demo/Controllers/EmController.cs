@@ -17,5 +17,14 @@ namespace AngularJs_Demo.Controllers
             var model = _iService.FindList<Employee>();
             return model;
         }
+
+        //public bool DelEntity(Employee e)
+        //{
+        //    return _iService.DelEntity(e);
+        //}
+        public bool UpadateEntity(Employee e)
+        {
+            return _iService.UpdateEntity(e);
+        }
     }
 }
